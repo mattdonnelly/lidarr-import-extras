@@ -1,0 +1,58 @@
+{
+  "artist": {
+    "id": 62,
+    "name": "Rochelle Jordan",
+    "disambiguation": "",
+    "path": "/home/mediandw/files/music/Rochelle Jordan",
+    "mbId": "260b6184-8828-48eb-945c-bc4cb6fc34ca",
+    "type": "Group",
+    "genres": [
+      "Electronic"
+    ],
+    "images": [],
+    "tags": []
+  },
+  "album": {
+    "id": 6430,
+    "mbId": "ff56abbb-a75e-4301-9dde-5755d66444bf",
+    "title": "Through the Wall",
+    "disambiguation": "",
+    "overview": "",
+    "albumType": "Album",
+    "secondaryAlbumTypes": [],
+    "releaseDate": "2025-11-10T00:00:00Z",
+    "genres": [],
+    "images": [
+      {
+        "coverType": "cover",
+        "url": "/MediaCover/Albums/6430/cover.jpg?lastWrite=638984677868152738",
+        "remoteUrl": "https://images.lidarr.audio/cache/https://coverartarchive.org/release/9edd6c7c-67b9-4a56-95e2-7ba01f4a430e/43526681527-1200.jpg"
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": 161203,
+      "title": "Grace",
+      "trackNumber": "1",
+      "qualityVersion": 0
+    }
+  ],
+  "trackFiles": [
+    {
+      "id": 23303,
+      "path": "/home/mediandw/files/music/Rochelle Jordan/Through The Wall/Rochelle Jordan - Through the Wall - 01 Grace.flac",
+      "quality": "FLAC",
+      "qualityVersion": 1,
+      "size": 18213634,
+      "dateAdded": "2025-11-11T14:24:05.5710336Z"
+    }
+  ],
+  "isUpgrade": false,
+  "downloadClient": "qBittorrent",
+  "downloadClientType": "qBittorrent",
+  "downloadId": "5017fabdd89b0f68ff54c39c4930b9049fff9830",
+  "eventType": "Download",
+  "instanceName": "Lidarr",
+  "applicationUrl": ""
+}
