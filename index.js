@@ -68,8 +68,9 @@ function applyPathMappings(inputPath, mappings) {
 }
 
 function findCommonRoot(paths) {
-  if (!paths || paths.length === 0)
+  if (!paths || paths.length === 0) {
     throw new Error("No paths provided to findCommonRoot");
+  }
 
   // Convert all paths to their directories
   const dirs = paths.map((p) => path.dirname(path.resolve(p)));
@@ -106,7 +107,9 @@ async function qbtLogin(cfg) {
       withCredentials: true,
     }
   );
-  if (res.data !== "Ok.") throw new Error("qBittorrent login failed");
+  if (res.data !== "Ok.") {
+    throw new Error("qBittorrent login failed");
+  }
   return res.headers["set-cookie"];
 }
 
