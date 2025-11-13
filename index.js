@@ -67,9 +67,9 @@ function applyPathMappings(inputPath, mappings) {
   return inputPath;
 }
 
-function findCommonRoot(paths) {
+function findCommonParentDir(paths) {
   if (!paths || paths.length === 0) {
-    throw new Error("No paths provided to findCommonRoot");
+    throw new Error("No paths provided to findCommonParentDir");
   }
 
   // Convert all paths to their directories
@@ -140,17 +140,14 @@ async function getTorrentFolder(cfg, downloadId, cookie) {
     throw new Error(`No files listed for torrent ${downloadId}`);
   }
 
-  const fileNames = files.data.map((f) => f.name);
-  const commonPrefix = findCommonRoot(fileNames);
+  const fileNames = files.data.map((f) => path.join(savePath, f.name));
+  const commonPrefix = findCommonParentDir(fileNames);
+
   if (!commonPrefix) {
     throw new Error("Could not identify common root for torrent folder files");
   }
 
-  const folderInsideTorrent = path.dirname(commonPrefix);
-  const fullPath = path.join(savePath, folderInsideTorrent);
-
-  console.log(`Original download folder resolved: ${fullPath}`);
-  return fullPath;
+  return commonPrefix;
 }
 
 function isExtraFile(filename) {
@@ -214,7 +211,7 @@ app.post("/webhook", async (req, res) => {
 
   try {
     const cfg = app.locals.cfg;
-    const albumPath = findCommonRoot(body.trackFiles.map((f) => f.path));
+    const albumPath = findCommonParentDir(body.trackFiles.map((f) => f.path));
     if (!albumPath) {
       throw new Error("Could not identify common root for lidarr track files");
     }
