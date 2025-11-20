@@ -28,7 +28,7 @@ function getConfigPath() {
     return path.join(
       process.env.APPDATA || path.join(home, "AppData", "Roaming"),
       "lidarr-import-extras",
-      "config.yml"
+      "config.yml",
     );
   }
   return path.join(home, ".config", "lidarr-import-extras", "config.yml");
@@ -105,7 +105,7 @@ async function qbtLogin(cfg) {
     {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       withCredentials: true,
-    }
+    },
   );
   if (res.data !== "Ok.") {
     throw new Error("qBittorrent login failed");
@@ -119,7 +119,7 @@ async function getTorrentFolder(cfg, downloadId, cookie) {
     `${cfg.qbittorrent.url}/api/v2/torrents/info?hashes=${downloadId}`,
     {
       headers: { Cookie: cookie.join("; ") },
-    }
+    },
   );
 
   if (!info.data?.length) {
@@ -133,7 +133,7 @@ async function getTorrentFolder(cfg, downloadId, cookie) {
     `${cfg.qbittorrent.url}/api/v2/torrents/files?hash=${downloadId}`,
     {
       headers: { Cookie: cookie.join("; ") },
-    }
+    },
   );
 
   if (!files.data?.length) {
@@ -178,10 +178,10 @@ async function linkExtrasRecursive(originalDir, albumPath, base = "") {
       await linkExtrasRecursive(
         entryPath,
         albumPath,
-        base ? `${base}-${entry.name}` : entry.name
+        base ? `${base}-${entry.name}` : entry.name,
       );
     } else if (entry.isFile() && isExtraFile(entry.name)) {
-      const destFile = base ? `${base}-${entry.name}` : entry.name;
+      const destFile = base ? `${base} - ${entry.name}` : entry.name;
       const dest = path.join(albumPath, destFile);
       try {
         await fs.unlink(dest);
