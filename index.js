@@ -107,7 +107,7 @@ async function qbtLogin(cfg) {
       withCredentials: true,
     },
   );
-  if (res.data !== "Ok.") {
+  if (!(res.status === 204 || res.data === "Ok.")) {
     throw new Error("qBittorrent login failed");
   }
   return res.headers["set-cookie"];
